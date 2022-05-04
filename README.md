@@ -27,14 +27,16 @@ Things you may want to cover:
 
 ## usersテーブル
 
-| Culumn     | Type   | Option      |
-|------------|--------|-------------|
-| nickname   | string | null: false |
-| email      | string | null: false |
-| password   | string | null: false |
-| last_name  | string | null: false |
-| first_name | string | null: false |
-| birthday   | date   | null: false |
+| Column             | Type   | Option      |
+|--------------------|--------|-------------|
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
+| last_name_kana     | string | null: false |
+| first_name_kana    | string | null: false |
+| birthday           | date   | null: false |
 
 ### association
 
@@ -43,26 +45,26 @@ Things you may want to cover:
 
 ## itemsテーブル
 
-| Culumn          | Type       | Option                         |
-|-----------------|------------|--------------------------------|
-| name            | string     | null: false                    |
-| price           | integer    | null: false                    |
-| category        | string     | null: false                    |
-| condition       | string     | null: false                    |
-| delivery_charge | string     | null: false                    |
-| delivery_source | string     | null: false                    |
-| delivery_date   | date       | null: false                    |
-| explanation     | text       | null: false                    |
-| user            | references | null: false, foreign_key: true |
+| Column        | Type       | Option                         |
+|---------------|------------|--------------------------------|
+| name          | string     | null: false                    |
+| price         | integer    | null: false                    |
+| category_id   | integer    | null: false                    |
+| condition_id  | integer    | null: false                    |
+| charge_id     | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| date_id       | integer    | null: false                    |
+| explanation   | text       | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 ### association
 
 - belongs_to : user
 - has_one : order
 
-## orderテーブル
+## ordersテーブル
 
-| Culumn | Type       | Option                         |
+| Column | Type       | Option                         |
 |--------|------------|--------------------------------|
 | user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
@@ -73,15 +75,15 @@ Things you may want to cover:
 - belongs_to : item
 - has_one : address
 
-| Culumn        | Type       | Option                         |
+| Column        | Type       | Option                         |
 |---------------|------------|--------------------------------|
 | order         | references | null: false, foreign_key: true |
-| postal_code   | integer    | null: false                    |
-| prefecture    | string     | null: false                    |
+| postal_code   | string     | null: false                    |
+| prefecture_id | string     | null: false                    |
 | municipality  | string     | null: false                    |
 | house_number  | string     | null: false                    |
-| building_name | string     | null: false                    |
-| phone_number  | integer    | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
 
 ### association
 
