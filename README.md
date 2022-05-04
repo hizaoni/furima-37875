@@ -75,6 +75,8 @@ Things you may want to cover:
 - belongs_to : item
 - has_one : address
 
+## addressテーブル
+
 | Column        | Type       | Option                         |
 |---------------|------------|--------------------------------|
 | order         | references | null: false, foreign_key: true |
