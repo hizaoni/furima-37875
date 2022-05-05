@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :schedule
 
+  has_one_attached :image
+
   validates :name, presence: true
   validates :explanation, presence: true
   validates :price, presence: true, numericality: { in: 300..9999999 }, format: { with: /\A[0-9]+\z/ }
