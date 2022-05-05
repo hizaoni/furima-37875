@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :schedule
 
   has_one_attached :image
+  validates :image, presence: true
 
   validates :name, presence: true
   validates :explanation, presence: true

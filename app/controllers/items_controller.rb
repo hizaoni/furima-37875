@@ -4,16 +4,21 @@ class ItemsController < ApplicationController
   end
 
   def new
-    Item.new
+    @item = Item.new
   end
 
   def create
-    Item.cleate(iten_param)
+    @item = Item.new(item_param)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
 
-  def iten_param
+  def item_param
     params.require(:item).permit(:name, :explanation, :price, :category_id, :condition_id, :charge_id, :prefecture_id, :date_id, :explanation, :image).merge(user_id: current_user.id)
     
   end
