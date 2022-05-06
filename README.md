@@ -53,7 +53,7 @@ Things you may want to cover:
 | condition_id  | integer    | null: false                    |
 | charge_id     | integer    | null: false                    |
 | prefecture_id | integer    | null: false                    |
-| date_id   | integer    | null: false                    |
+| date_id       | integer    | null: false                    |
 | explanation   | text       | null: false                    |
 | user          | references | null: false, foreign_key: true |
 
