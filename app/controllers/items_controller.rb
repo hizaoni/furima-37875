@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :move_to_idex, only: :edit
+  before_action :find_item, only: [:show, :update, :edit]
 
   def index
     @items = Item.order(id: :DESC)
@@ -20,15 +21,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+
   end
 
   def edit
-    @item = Item.find(params[:id])
+    
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_param)
       redirect_to item_path(@item)
     else
@@ -47,4 +47,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     redirect_to root_path if current_user.id != @item.user_id
   end
+
+  def find_item
+    @item = Item.find(params[:id])
+  end
+
 end
