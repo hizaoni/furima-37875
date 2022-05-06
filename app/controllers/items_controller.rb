@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :move_to_idex, only: :edit
+  before_action :move_to_idex, only: [:edit, :destroy]
   before_action :find_item, only: [:show, :update, :edit]
 
   def index
@@ -21,11 +21,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-    
   end
 
   def update
@@ -34,6 +32,11 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   private
@@ -51,5 +54,4 @@ class ItemsController < ApplicationController
   def find_item
     @item = Item.find(params[:id])
   end
-
 end
