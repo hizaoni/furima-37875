@@ -11,7 +11,7 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :explanation, presence: true
-  validates :price, presence: true, numericality: { in: 300..9999999 }, format: { with: /\A[0-9]+\z/ }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/ }
 
 
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" } 
@@ -19,4 +19,6 @@ class Item < ApplicationRecord
   validates :charge_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :date_id, numericality: { other_than: 1, message: "can't be blank" }
+
+  belongs_to :user
 end
