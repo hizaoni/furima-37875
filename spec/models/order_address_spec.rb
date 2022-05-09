@@ -57,6 +57,12 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
 
+      it 'house_numberrがないと購入できない' do
+        @order_address.house_number = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("House number can't be blank")
+      end
+
       it 'tokenがないと購入できない' do
         @order_address.token = nil
         @order_address.valid?
@@ -79,6 +85,12 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.phone_number = '123456789'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
+      end
+
+      it 'phone_numberが12桁以上だと購入できない' do
+        @order_address.phone_number = '123456789012'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
     end
   end
